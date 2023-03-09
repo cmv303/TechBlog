@@ -4,9 +4,9 @@
 const express = require ('express');
 const router = express.Router();
 
-const controller = require ('./indexController');
+const controllerI = require ('./indexController');
 
-router.get('/', controller.get);
-router.post('/signup', controller.post);
+router.get('/', controllerI.get);
+router.post('/signup', controllerI.post);
 
 module.exports = router;
