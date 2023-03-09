@@ -1,48 +1,58 @@
 //dependencies
-const path = require('path');
-const express = require('express');
-const session = require('express-session');
-const exhandlebars= require('express-handlebars');
-const handlebars = exhandlebars.create({});
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const path = require("path");
+const express = require("express");
+const session = require("express-session");
+const exhbs = require("express-handlebars");
+const helpers = require("./components/helpers");
+const hbs = exhbs.create({ helpers });
 
 //iniitialize express app
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3306;
+console.log("Hello hello");
+
+//initalize sequelize
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+//initializes routes
+const userRoute = require("./routes/UserRoutes");
+const indexRoute = require("./routes/indexRoutes");
 
 // Set up sessions
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {
-        // httpOnly tells express-session to only store session cookies when the protocol being used to connect to the server is HTTP.
-        httpOnly: true,
-        // secure tells express-session to only initialize session cookies when the protocol being used is HTTPS. Having this set to true, and running a server without encryption will result in the cookies not showing up in your developer console.
-        secure: false,
-        // sameSite tells express-session to only initialize session cookies when the referrer provided by the client matches the domain out server is hosted from.
-    sameSite: 'strict',
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new
-    SequelizeStore({
-        db: sequelize,
-    })
-  };
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+console.log("What's going on?")
 
 app.use(session(sess));
 
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
+//sets up express-handlebars
+app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
 
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(require('./controllers/UserRoutes'));
-
+app.use(express.static(path.join(__dirname, "public")));
+app.use(indexRoute);
+app.use(userRoute);
+console.log("I've made it down here");
 
 //starts the server to begin listening
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
-  });
+//! can't seem to use this async function. Code brakes:
+// sequelize.sync({ force: false }).then(() => {
+//     app.listen(PORT, () => console.log('Now listening'));
+//   });
+
+app.listen(PORT, () => console.log("Server is now listening, yay: "));

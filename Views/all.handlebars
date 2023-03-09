@@ -1,0 +1,17 @@
+<main class="landing-page">
+    {{#if email}}
+    <h1>Thanks for joining us, {{email}}!</h1>
+    {{else}}
+  <form action="/signup" method="post">
+    <h3>If you'd like to contribute to the blog, all you have to do is Sign Up
+      or Log in</h3>
+    <div class="email">
+      <input
+        type="email"
+        name="emailInput"
+        placeholder="youremail@emailaddress.com">
+      <button type="submit">submit</button>
+    </div>
+  </form>
+  {{/if}}
+</main>

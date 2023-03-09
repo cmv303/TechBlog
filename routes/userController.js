@@ -2,7 +2,7 @@
 
 module.exports = {
 
-get: (req, res) => {
+get: (req, res, next) => {
     res.send("user: ")
 },
 
@@ -17,6 +17,12 @@ get: (req, res) => {
 //         password: req.body.password,
 //       });
 post: (req, res) => {
+    let id = req.params.id;
     res.post("posting: ")
+
+    if (id === )
+} else {
+
+};
 }
-}
+
