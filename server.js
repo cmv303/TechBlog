@@ -5,6 +5,7 @@ const session = require("express-session");
 const exhbs = require("express-handlebars");
 const helpers = require("./components/helpers");
 const hbs = exhbs.create({ helpers });
+require("dotenv").config();
 
 //iniitialize express app
 const app = express();
@@ -33,17 +34,18 @@ const sess = {
     db: sequelize,
   }),
 };
-console.log("What's going on?")
+console.log("What's going on?");
 
 app.use(session(sess));
 
 //sets up express-handlebars
-app.engine("hbs", hbs.engine);
-app.set("view engine", "hbs");
+app.engine("handlebars", hbs.engine);
+app.set('views', path.join(__dirname, "views"));
+app.set("view engine", "handlebars");
 
 //middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(indexRoute);
 // app.use(userRoute);
@@ -55,4 +57,7 @@ console.log("I've made it down here");
 //     app.listen(PORT, () => console.log('Now listening'));
 //   });
 
-app.listen(PORT, () => console.log("Server is now listening, yay: "));
+app.listen(PORT, () => {
+  console.log("Server is now listening, yay: ");
+  sequelize.sync({ force: false });
+});

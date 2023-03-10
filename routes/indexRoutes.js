@@ -8,7 +8,7 @@ const homeRoutes = require('./homeRoutes')
 const apiRoutes = require ('./api');
 
 router.use('/api', apiRoutes);
-router.route('/').get(homeRoutes.get()).post(homeRoutes.post());
+router.route('/').get(homeRoutes.get).post(homeRoutes.post);
 
 
 module.exports = router;
