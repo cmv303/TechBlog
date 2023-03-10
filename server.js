@@ -8,7 +8,7 @@ const hbs = exhbs.create({ helpers });
 
 //iniitialize express app
 const app = express();
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3001;
 console.log("Hello hello");
 
 //initalize sequelize
@@ -16,7 +16,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 //initializes routes
-const userRoute = require("./routes/UserRoutes");
+// const userRoute = require("./routes/api/UserRoutes");
 const indexRoute = require("./routes/indexRoutes");
 
 // Set up sessions
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(indexRoute);
-app.use(userRoute);
+// app.use(userRoute);
 console.log("I've made it down here");
 
 //starts the server to begin listening

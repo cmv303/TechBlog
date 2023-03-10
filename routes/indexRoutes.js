@@ -3,10 +3,12 @@
 //! How do I turn this into a res.render('all') method instead? 
 const express = require ('express');
 const router = express.Router();
+const homeRoutes = require('./homeRoutes')
 
-const controllerI = require ('./indexController');
+const apiRoutes = require ('./api');
 
-router.get('/', controllerI.get);
-router.post('/signup', controllerI.post);
+router.use('/api', apiRoutes);
+router.route('/').get(homeRoutes.get()).post(homeRoutes.post());
+
 
 module.exports = router;

@@ -2,8 +2,9 @@
 
 module.exports = {
 
-get: (req, res, next) => {
-    res.send("user: ")
+get(req, res) {
+    console.log("res", res)
+    res.json({message: "Hello!"})
 },
 
 //* look at activity 16, under api > user-router. 
@@ -16,13 +17,13 @@ get: (req, res, next) => {
 //         email: req.body.email,
 //         password: req.body.password,
 //       });
-post: (req, res) => {
+post(req, res){
     let id = req.params.id;
-    res.post("posting: ")
+    res.json({message: "posting"})
 
-    if (id === )
-} else {
+//     if (id === )
+// } else {
 
-};
+}
 }
 
