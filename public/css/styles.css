@@ -6,17 +6,6 @@
     padding: 0;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-}
-
-h1 {
-    margin-right: auto;
-}
-
 li, a {
     font-family: "Montserrat", sans-serif;
     font-size: 16px;
@@ -24,13 +13,18 @@ li, a {
     text-decoration: none;
     list-style: none;
     cursor: pointer;
-}
-
-.nav-links li {
     display: inline-block;
     padding: 0px 20px;
+    transition: all 0.3s ease 0s;
 }
 
-.nav-links li a {
-    transition: all 0.3s ease 0s;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+ li a:hover {
+    color: #0088a9
 }
