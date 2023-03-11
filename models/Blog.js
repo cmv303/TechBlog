@@ -1,7 +1,7 @@
 //set blog model for connecting to database
 //responsible for handling data and business logic
 
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, STRING } = require("sequelize");
 const sequelize = require("../config/connection");
 const SignUp = require("./Signup");
 
@@ -12,7 +12,6 @@ Blog.init(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true,
       autoIncrement: true,
     },
     blog_name: {
@@ -27,6 +26,14 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    userId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "id",
+      }
+    }
   },
   {
     sequelize,
@@ -39,4 +46,4 @@ Blog.init(
 // `sequelize.define` also returns the model
 console.log(Blog === sequelize.models.Blog); // true
 
-module.exports = Blog;
+module.exports = {Blog, SignUp};
