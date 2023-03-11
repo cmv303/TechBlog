@@ -27,7 +27,7 @@ SignUp.init(
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: "User",
+        model: "SignUp",
         key: "id",
       },
     },

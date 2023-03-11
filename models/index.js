@@ -4,7 +4,7 @@
 //Entry to SignUp: many to many 
 
 
-const Entry = require("./User");
+const Entry = require("./Entry");
 const User = require("./User");
 const SignUp = require("./SignUp");
 
