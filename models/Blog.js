@@ -3,6 +3,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const SignUp = require("./Signup");
 
 class Blog extends Model {}
 
@@ -31,8 +32,11 @@ Blog.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "blog",
+    modelName: "Blog",
   }
 );
+
+// `sequelize.define` also returns the model
+console.log(Blog === sequelize.models.Blog); // true
 
 module.exports = Blog;
