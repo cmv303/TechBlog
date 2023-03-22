@@ -9,8 +9,10 @@ class Post extends Model {}
 
 Post.init(
   {
-    post_id: {
+    id: {
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
     post_name: {

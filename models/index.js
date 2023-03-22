@@ -17,36 +17,36 @@ const User = require("./User");
 const SignUp = require("./SignUp");
 const Comment = require("./Comment");
 
-Post.hasOne(User, {
-    foreignKey: "userId",
-});
+// Post.hasOne(User, {
+//     foreignKey: "user_id",
+// });
 
-Post.hasMany(Comment, {
+// Post.hasMany(Comment, {
 
-});
+// });
 
-User.hasMany(Post, {
+// User.hasMany(Post, {
 
-});
+// });
 
-User.hasMany (Comment, {
+// User.hasMany (Comment, {
 
-});
+// });
 
-SignUp.belongsTo(User, {
-    foreignKey: "userID",
-    onDelete: 'CASCADE',
-});
+// SignUp.belongsTo(User, {
+//     foreignKey: "userID",
+//     onDelete: 'CASCADE',
+// });
 
-//? Do I need this, if the above block is the same, but reversed?
-User.hasOne(SignUp, {
+// //? Do I need this, if the above block is the same, but reversed?
+// User.hasOne(SignUp, {
     
-}); 
+// }); 
 
 
-Post.hasMany(SignUp, {
+// Post.hasMany(SignUp, {
 
-});
+// });
 
 
 

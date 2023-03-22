@@ -15,6 +15,7 @@ SignUp.init(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       autoIncrement: true,
     },
     email: {
@@ -34,7 +35,7 @@ SignUp.init(
       },
     },
     postDate: {
-      type: DataTypes.DATETIME(6),
+      type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
       allowNull: false,
       unique: true,
