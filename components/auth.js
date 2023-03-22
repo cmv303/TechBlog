@@ -1,5 +1,12 @@
-//authentication for
-//express-session
+//withAuth
 
-//! How do I move what's in server.js to here?
-
+const withAuth = (req, res, next) => {
+    if (!req.session.loggedIn) {
+      res.redirect("/");
+    } else {
+      next();
+    }
+  };
+  
+  module.exports = withAuth;
+  

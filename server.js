@@ -17,8 +17,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 //initializes routes
-// const userRoute = require("./routes/api/UserRoutes");
-const indexRoute = require("./routes/indexRoutes");
+const routes = require("./controllers");
 
 // Set up sessions
 const sess = {
@@ -40,15 +39,14 @@ app.use(session(sess));
 
 //sets up express-handlebars
 app.engine("handlebars", hbs.engine);
-app.set('views', path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "handlebars");
 
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use(indexRoute);
-// app.use(userRoute);
+app.use(routes);
 console.log("I've made it down here");
 
 //starts the server to begin listening
@@ -58,6 +56,6 @@ console.log("I've made it down here");
 //   });
 
 app.listen(PORT, () => {
-  console.log("Server is now listening, yay: ");
+  console.log(`Server is now listening on port ${PORT}, yay: `);
   sequelize.sync({ force: false });
 });

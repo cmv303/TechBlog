@@ -1,18 +1,35 @@
-//Entry to User: one to one (one entry to one user)
-//User to Entry: one to many (one user to many entries)
+//Post to User: one to one (one post to one user)
+//Post to Comment: one to many (one post can have many comments)
+//!unsure
+//Post to SignUp: many to many  (many posts to many signups) 
+
+//!unsure
+//Comment to Post: many to one (many comments can have one post)
+//Comment to User: many to one (many comments belongsto one user)
+
+//User to Comment: hasMany (one user hasMany comments)
+//User to Post: one to many (one user to many posts)
 //User to SignUp: one to one (one user has one signUp)
-//Entry to SignUp: many to many 
 
 
-const Entry = require("./Entry");
+const Post = require("./Post");
 const User = require("./User");
 const SignUp = require("./SignUp");
+const Comment = require("./Comment");
 
-Entry.hasOne(User, {
+Post.hasOne(User, {
     foreignKey: "userId",
 });
 
-User.hasMany(Entry, {
+Post.hasMany(Comment, {
+
+});
+
+User.hasMany(Post, {
+
+});
+
+User.hasMany (Comment, {
 
 });
 
@@ -27,10 +44,10 @@ User.hasOne(SignUp, {
 }); 
 
 
-Entry.hasMany(SignUp, {
+Post.hasMany(SignUp, {
 
 });
 
 
 
-module.exports = {Entry, User, SignUp};
+module.exports = {Post, User, SignUp, Comment};

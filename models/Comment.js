@@ -4,32 +4,24 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-class SignUp extends Model {
+class Comment extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-SignUp.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
-    user_id: {
+    userId: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
-        model: "SignUp",
+        model: "Comment",
         key: "id",
       },
     },
@@ -45,11 +37,11 @@ SignUp.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "SignUp",
+    modelName: "Comment",
   }
 );
 
 // `sequelize.define` also returns the model
-console.log(SignUp === sequelize.models.SignUp); // true
+console.log(Comment === sequelize.models.Comment); // true
 
-module.exports = SignUp;
+module.exports = Comment;

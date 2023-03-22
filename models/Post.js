@@ -3,18 +3,17 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const SignUp = require("./Signup");
+const SignUp = require("../controllers/api/post-routes");
 
-class Entry extends Model {}
+class Post extends Model {}
 
-Entry.init(
+Post.init(
   {
-    id: {
+    post_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      autoIncrement: true,
     },
-    entry_name: {
+    post_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -26,7 +25,7 @@ Entry.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    userId: {
+    user_id: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
@@ -39,11 +38,12 @@ Entry.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "Entry",
+    modelName: "Post",
   }
 );
 
 // `sequelize.define` also returns the model
-console.log(Entry === sequelize.models.Entry); // true
+console.log(Post === sequelize.models.Post); // true
 
-module.exports = {Entry, SignUp};
+//!unsure about LoggedIn. also unsure of route on line 6
+module.exports = {Post, SignUp};
