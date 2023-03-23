@@ -17,9 +17,9 @@ const User = require("./User");
 const SignUp = require("./SignUp");
 const Comment = require("./Comment");
 
-// Post.hasOne(User, {
-//     foreignKey: "user_id",
-// });
+Post.hasOne(User, {
+    foreignKey: "user_id",
+});
 
 // Post.hasMany(Comment, {
 

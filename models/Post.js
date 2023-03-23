@@ -3,7 +3,7 @@
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const SignUp = require("../controllers/api/post-routes");
+
 
 class Post extends Model {}
 
@@ -47,5 +47,5 @@ Post.init(
 // `sequelize.define` also returns the model
 console.log(Post === sequelize.models.Post); // true
 
-//!unsure about LoggedIn. also unsure of route on line 6
-module.exports = {Post, SignUp};
+
+module.exports = Post;
