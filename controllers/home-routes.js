@@ -3,15 +3,16 @@ const { Post, Comment, User } = require('../models/');
 
 // get all posts for homepage
 router.get('/', async (req, res) => {
+  console.log("Am I inside the GET?")
   try {
     // we need to get all Posts and include the User for each (change lines 8 and 9)
-    const postData = await SomeModel.someSequelizeMethod({
-      include: [SomeOtherModel],
+    const postData = await Post.findAll({
+      include: [User],
     });
     // serialize the data
     const posts = postData.map((post) => post.get({ plain: true }));
     // render all the posts here
-    res.render('hmmmm what view should we render?', { posts });
+    res.render('post', { posts });
   } catch (err) {
     res.status(500).json(err);
   }

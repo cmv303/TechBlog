@@ -23,18 +23,6 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    user_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "User",
-        key: "id",
-      }
-    }
   },
   {
     sequelize,

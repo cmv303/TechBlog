@@ -18,14 +18,14 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "Comment",
-        key: "id",
-      },
-    },
+    // user_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   references: {
+    //     model: "Comment",
+    //     key: "id",
+    //   },
+    // },
     postDate: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,

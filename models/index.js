@@ -14,7 +14,6 @@
 
 const Post = require("./Post");
 const User = require("./User");
-const SignUp = require("./SignUp");
 const Comment = require("./Comment");
 
 Post.hasOne(User, {
@@ -50,4 +49,4 @@ Post.hasOne(User, {
 
 
 
-module.exports = {Post, User, SignUp, Comment};
+module.exports = {Post, User, Comment};
