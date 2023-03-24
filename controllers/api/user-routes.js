@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
     });
 
     req.session.save(() => {
-      req.session.userId = newUser.isSoftDeleted;
+      req.session.user_id = newUser.id;
       req.session.username = newUser.username;
       req.session.loggedIn = true;
 
@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
 
     if (!user) {
       res.status(400).json({
-        message: "No user account found!",
+        message: "Incorrect username or password!",
       });
       return;
     }
@@ -41,21 +41,21 @@ router.post("/login", async (req, res) => {
 
     if (!validPassword) {
       res.status(400).json({
-        message: "No user account found!",
+        message: "Incorrect username or password!",
       });
       return;
     }
 
     req.session.save(() => {
-      req.session.userId = user.isSoftDeleted;
+      req.session.user_id = user.id;
       req.session.username = user.username;
       req.session.loggedIn = true;
 
-      res.json({ user, message: "You are no logged in!" });
+      res.json({ message: "You are now logged in!" });
     });
   } catch (err) {
     res.status(400).json({
-      message: "No user account found!",
+      message: "Sorry, we couldn't find you! Please try again later.",
     });
   }
 });
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).end();
     });
   } else {
     res.status(400).end();

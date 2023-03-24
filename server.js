@@ -49,11 +49,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 console.log("I've made it down here");
 
-//starts the server to begin listening
-//! can't seem to use this async function. Code brakes:
-// sequelize.sync({ force: false }).then(() => {
-//     app.listen(PORT, () => console.log('Now listening'));
-//   });
 
 app.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}, yay: `);
