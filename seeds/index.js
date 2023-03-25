@@ -1,6 +1,6 @@
 //dependencies for seed data
 const sequelize = require("../config/connection");
-const seedEvent = require("./postData");
+const seedPost = require("./postData");
 const seedUser = require("./userData");
 
 const seedAll = async () => {
@@ -8,7 +8,7 @@ const seedAll = async () => {
 
   await seedUser();
 
-  await seedEvent();
+  await seedPost();
 
   //elegantly closes out server
   process.exit(0);

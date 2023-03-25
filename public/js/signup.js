@@ -5,7 +5,7 @@ const signupFormHandler = async function (event) {
   const usernameEl = document.querySelector("#username-signUpId");
   const passwordEl = document.querySelector("#password-signUpId");
 
-  const response = await fetch("/user", {
+  const response = await fetch("api/user/signup", {
     method: "POST",
     body: JSON.stringify({
       username: usernameEl.value,
@@ -23,5 +23,5 @@ const signupFormHandler = async function (event) {
 };
 
 document
-  .querySelector("#signup-form")
+  .querySelector(".email-signup")
   .addEventListener("submit", signupFormHandler);

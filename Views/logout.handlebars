@@ -1,5 +1,9 @@
 <main>
-  <h1>Logged Out</h1>
-  <p>Thank you for using our app! You have been successfully logged out.</p>
-  <a href="/login" class="btn">Log In</a>
+  <form action="api/user/logout" method="POST">
+    <h3>Sad to see you go!</h3>
+    <div id="logout">
+      <button type="submit" id="logout-button">Logout</button>
+   </div>
+  </form>
 </main>
+

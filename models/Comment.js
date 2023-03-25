@@ -11,9 +11,15 @@ Comment.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    postDate: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+    post_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "Post",
+        key: "id",
+      },
+    },
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

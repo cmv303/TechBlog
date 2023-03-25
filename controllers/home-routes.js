@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
 
 // get single post
 router.get('/post/:id', async (req, res) => {
+  console.log("Am I inside the Post:id?")
   try {
     // what should we pass here? we need to get some data passed via the request body (something.something.id?)
     // change the model below, but not the findByPk method.
@@ -48,6 +49,7 @@ router.get('/post/:id', async (req, res) => {
 
 // giving you the login and signup route pieces below, no changes needed.
 router.get('/login', (req, res) => {
+  console.log("Am I inside the GET login?")
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
@@ -57,12 +59,23 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
+  console.log("Am I inside the GET signup?")
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
 
   res.render('signup');
+});
+
+router.get('/logout', (req, res) => {
+  console.log("Am I inside the GET logout?")
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('logout');
 });
 
 module.exports = router;
