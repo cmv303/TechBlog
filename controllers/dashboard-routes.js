@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { Post } = require("../models/Post");
-const { User } = require("../models/User");
 const withAuth = require("../components/auth");
 
 router.get("/", withAuth, async (req, res) => {
@@ -19,7 +18,6 @@ router.get("/", withAuth, async (req, res) => {
       // coming from line 10 above, no change needed
       posts,
     });
-    res.status(200).json(postData);
   } catch (err) {
     res.redirect("/login");
   }

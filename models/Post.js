@@ -1,9 +1,5 @@
-//set Entry model for connecting to database
-//responsible for handling data and business logic
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-
 
 class Post extends Model {}
 
@@ -26,6 +22,7 @@ Post.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "Post",
@@ -34,6 +31,5 @@ Post.init(
 
 // `sequelize.define` also returns the model
 console.log(Post === sequelize.models.Post); // true
-
 
 module.exports = Post;

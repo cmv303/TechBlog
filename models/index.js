@@ -1,52 +1,35 @@
-//Post to User: one to one (one post to one user)
-//Post to Comment: one to many (one post can have many comments)
-//!unsure
-//Post to SignUp: many to many  (many posts to many signups) 
-
-//!unsure
-//Comment to Post: many to one (many comments can have one post)
-//Comment to User: many to one (many comments belongsto one user)
-
-//User to Comment: hasMany (one user hasMany comments)
-//User to Post: one to many (one user to many posts)
-//User to SignUp: one to one (one user has one signUp)
-
-
 const Post = require("./Post");
 const User = require("./User");
 const Comment = require("./Comment");
 
-Post.hasOne(User, {
-    foreignKey: "user_id",
+//Post to User: A Post belongs to one User (user_id foreign key).
+Post.belongsTo(User, {
+  foreignKey: "user_id",
 });
 
-// Post.hasMany(Comment, {
+//Post to Comment: A Post has many Comments (post_id foreign key).
+Post.hasMany(Comment, {
+  foreignKey: "post_id",
+});
 
-// });
+//User to Post: A User has many Posts (user_id foreign key).
+User.hasMany(Post, {
+  foreignKey: "user_id",
+});
 
-// User.hasMany(Post, {
+//User to Comment: A User has many Comments (user_id foreign key).
+User.hasMany(Comment, {
+  foreignKey: "user_id",
+});
 
-// });
+//Comment to Post: A Comment belongs to one Post (post_id foreign key).
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
+});
 
-// User.hasMany (Comment, {
+//Comment to User: A Comment belongs to one User (user_id foreign key).
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-// });
-
-// SignUp.belongsTo(User, {
-//     foreignKey: "userID",
-//     onDelete: 'CASCADE',
-// });
-
-// //? Do I need this, if the above block is the same, but reversed?
-// User.hasOne(SignUp, {
-    
-// }); 
-
-
-// Post.hasMany(SignUp, {
-
-// });
-
-
-
-module.exports = {Post, User, Comment};
+module.exports = { Post, User, Comment };
