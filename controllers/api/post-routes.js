@@ -2,8 +2,8 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../components/auth');
 
-router.post('/', withAuth, async (req, res) => {
-    console.log("hi, hello, how are you post?")
+router.post('/post', withAuth, async (req, res) => {
+    console.log("hi, hello, how are you")
     const body = req.body;
 
     try {
