@@ -1,24 +1,14 @@
 <main>
-  {{!-- <input type="text" class="datepicker modal-overlay" placeholder="test picker"> --}}
-    {{!-- <div class="logoutButton">
-    <button id="logout" class="btn logout">Logout</button>
-    </div> --}}
-
-{{!-- trigger/open the modal --}}
-    {{!-- <button id="addPost" class="btn addPost">Add Event</button>
-  {{!-- the modal --}}
-  <div id="addPostModal" class="modal"> --}}
-
-  <!-- Modal content -->
+ 
   <div class="modal-content">
-    {{!-- Add form here --}}
-    <form class="addPost-form" id="addPost-form">
+  
+    <form class="addPost-form" id="addPost-formId">
 
     <div class="row">
       <h3 class="col s12">Add New Post</h3>
       <div class="parent">
         <input class="input" id="post-name" type="name" name="post-name" placeholder="What's your post titled?">
-        <input class="input" id="post-entry" type="text" name="post-entry" placeholder="What's on your mind?">
+        <input class="input" id="description" type="text" name="description" placeholder="What's on your mind?">
         <button id="addToDashboard" class="btn" type="submit">Add to your addToDashboard!</button>
         </div>
     </div>
@@ -27,5 +17,6 @@
 </div>
 
 </main>
+<script src="/js/add-post.js"></script>
 <script src="/js/dashboard.js"></script>
 <script src="/js/logout.js"></script>

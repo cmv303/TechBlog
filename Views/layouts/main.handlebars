@@ -8,10 +8,23 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    {{>header}}
+   <header>
+ 
+  <nav class="nav-links">
+    <ul>    
+    <li class="li-inline nav-item"><a href="/">Home</a></li>
+    <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+    <li class="li-inline nav-item"><a href="/login">Login</a></li>
+    <li class="li-inline nav-item"><a href="/signup" id="signup-link">Signup</a></li>
+    <li class="li-inline nav-item"><a href="/logout" id="logout-link">Logout</a></li>
+    </ul>
+    {{!-- <li><a href="#">New post</a></li> --}}
+  </nav>
+   <h1>Welcome to {{title}}</h1>
+</header>
 
     {{{body}}}
     
-    {{>footer}}
+
 </body>
 </html>

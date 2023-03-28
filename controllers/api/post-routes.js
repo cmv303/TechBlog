@@ -3,6 +3,7 @@ const { Post } = require('../../models');
 const withAuth = require('../../components/auth');
 
 router.post('/', withAuth, async (req, res) => {
+    console.log("hi, hello, how are you post?")
     const body = req.body;
 
     try {

@@ -1,16 +1,15 @@
 async function newFormHandler(event) {
   event.preventDefault();
+  console.log("add-post route??");
 
-  const post_name = document.querySelector("#post_name").value;
+  const post_name = document.querySelector("#post-name").value;
   const description = document.querySelector("#description").value;
-  const user_name = document.querySelector("#user_name").value;
 
-  const response = await fetch(`/api/user/post`, {
+  const response = await fetch(`/api/post`, {
     method: "POST",
     body: JSON.stringify({
       post_name,
       description,
-      user_name,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -25,5 +24,5 @@ async function newFormHandler(event) {
 }
 
 document
-  .querySelector(".new-post-form")
+  .querySelector(".addPost-form")
   .addEventListener("submit", newFormHandler);

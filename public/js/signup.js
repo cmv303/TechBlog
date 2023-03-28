@@ -23,5 +23,5 @@ console.log("Am i in the signup.js???")
 };
 
 document
-  .querySelector(".email-signup")
+  .querySelector(".email-form")
   .addEventListener("submit", signupFormHandler);
