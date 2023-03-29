@@ -8,13 +8,11 @@ router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
       email: req.body.email,
-      username: req.body.username,
       password: req.body.password,
     });
 
     req.session.save(() => {
       req.session.user_id = newUser.id;
-      req.session.username = newUser.username;
       req.session.loggedIn = true;
 
       res.json(newUser);
@@ -26,9 +24,10 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
+    console.log("Am i logged in?")
     const user = await User.findOne({
       where: {
-        username: req.body.username,
+        email: req.body.email,
       },
     });
 
@@ -40,7 +39,7 @@ router.post("/login", async (req, res) => {
     }
 
     const validPassword = user.checkPassword(req.body.password);
-
+console.log("valid password???", validPassword)
     if (!validPassword) {
       res.status(400).json({
         message: "Incorrect username or password!",
@@ -50,12 +49,13 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = user.id;
-      req.session.username = user.username;
+      req.session.email = user.email;
       req.session.loggedIn = true;
 
       res.json({ message: "You are now logged in!" });
     });
   } catch (err) {
+    console.log("ERROR", err)
     res.status(400).json({
       message: "Sorry, we couldn't find you! Please try again later.",
     });

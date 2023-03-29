@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     // serialize the data
     const posts = postData.map((post) => post.get({ plain: true }));
     // render all the posts here
-    res.render('post', { posts });
+    res.render('all', { posts });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -38,7 +38,7 @@ router.get('/post/:id', async (req, res) => {
       // serialize the data
       const post = postData.get({ plain: true });
       // which view should we render for a single-post?
-      res.render('post', { post });
+      res.render('/post', { post });
     } else {
       res.status(404).end();
     }
@@ -51,11 +51,21 @@ router.get('/post/:id', async (req, res) => {
 router.get('/login', (req, res) => {
   console.log("Am I inside the GET login?")
   if (req.session.loggedIn) {
-    res.redirect('/');
     return;
   }
 
   res.render('login');
+});
+
+router.get('/dashboard', (req, res) => {
+  console.log("Am I inside the GET dashboard?")
+  if (req.session.loggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
+  res.render('dashboard');
+
 });
 
 router.get('/signup', (req, res) => {
@@ -70,11 +80,6 @@ router.get('/signup', (req, res) => {
 
 router.get('/logout', (req, res) => {
   console.log("Am I inside the GET logout?")
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
   res.render('logout');
 });
 

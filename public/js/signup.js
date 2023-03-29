@@ -8,7 +8,6 @@ console.log("Am i in the signup.js???")
   const response = await fetch("api/user/signup", {
     method: "POST",
     body: JSON.stringify({
-      username: usernameEl.value,
       email: emailEl.value,
       password: passwordEl.value,
     }),
