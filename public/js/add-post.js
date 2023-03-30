@@ -5,7 +5,7 @@ async function newFormHandler(event) {
   const post_name = document.querySelector("#post-name").value;
   const description = document.querySelector("#description").value;
 
-  const response = await fetch('/post', {
+  const response = await fetch('api/new/post', {
     method: "POST",
     body: JSON.stringify({
       post_name,
@@ -22,7 +22,6 @@ async function newFormHandler(event) {
     alert("Failed to add new post");
   }
 }
-
 document
   .querySelector(".addPost-form")
   .addEventListener("submit", newFormHandler);

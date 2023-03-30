@@ -51,21 +51,10 @@ router.get('/post/:id', async (req, res) => {
 router.get('/login', (req, res) => {
   console.log("Am I inside the GET login?")
   if (req.session.loggedIn) {
+    res.redirect('/');
     return;
   }
-
   res.render('login');
-});
-
-router.get('/dashboard', (req, res) => {
-  console.log("Am I inside the GET dashboard?")
-  if (req.session.loggedIn) {
-    res.redirect('/login');
-    return;
-  }
-
-  res.render('dashboard');
-
 });
 
 router.get('/signup', (req, res) => {

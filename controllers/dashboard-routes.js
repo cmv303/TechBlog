@@ -8,27 +8,19 @@ router.get("/", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
-      attributes: ["post-name", "description"],
+      attributes: ["post_name", "description"],
     });
     const posts = postData.map((post) => post.get({ plain: true }));
     // fill in the view to be rendered
-    res.render("post", {
-      // this is how we specify a different layout other than main! no change needed
-      layout: "dashboard",
-      // coming from line 10 above, no change needed
-      posts,
-    });
+    res.render("dashboard", {posts});
   } catch (err) {
-    res.redirect("/login");
+    console.log("Why error??")
   }
 });
 
 router.get("/new", withAuth, (req, res) => {
   // what view should we send the client when they want to create a new-post? (change this next line)
-  res.render("post", {
-    // again, rendering with a different layout than main! no change needed
-    layout: "dashboard",
-  });
+  res.render("post");
 });
 
 router.get("/edit/:id", withAuth, async (req, res) => {
@@ -41,15 +33,11 @@ router.get("/edit/:id", withAuth, async (req, res) => {
       const post = postData.get({ plain: true });
       // which view should we render if we want to edit a post?
       //! ?? is it 'edit' that I need?
-      res.render("edit", {
-        layout: "dashboard",
-        post,
-      });
+      res.render("edit", {post});
     } else {
       res.status(404).end();
     }
   } catch (err) {
-    res.redirect("/login");
   }
 });
 

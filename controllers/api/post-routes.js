@@ -7,9 +7,11 @@ router.post('/post', withAuth, async (req, res) => {
     const body = req.body;
 
     try {
+        console.log("Are you userIDDD?", req.session.user_id)
         const newPost = await Post.create({ ...body, user_id: req.session.user_id });
         res.json(newPost);
     } catch (err) {
+        console.log("why 500 error", err)
         res.status(500).json(err);
     }
 });

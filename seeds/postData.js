@@ -4,7 +4,7 @@ const { Post } = require("../models");
 
 const postdata = [
   {
-    post_name: "How to route correcly",
+    post_name: "How to route correctly",
     description:
       "This entry breaks down how routes and controllers work together",
       user_id: 1

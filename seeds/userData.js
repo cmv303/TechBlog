@@ -3,7 +3,6 @@ const { User } = require("../models");
 //seed data
 const userdata = [
   {
-    username: "cmv303",
     email: "moreiras.camila@gmail.com",
     password: "12345",
   },
