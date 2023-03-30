@@ -1,18 +1,12 @@
 <main>
+  <h2 class="col s12">Welcome to your dashboard</h2>
   <div class="modal-content">
-
-   
-
-      <div class="row">
-        <h3 class="col s12">Welcome to your dashboard</h3>
-
-      </div>
-    
+    <div class="row">
+      
+    </div>
   </div>
   <div class="modal-content">
-
     <form class="addPost-form" id="addPost-formId">
-
       <div class="row">
         <h3 class="col s12">Add New Post</h3>
         <div class="parent">
@@ -37,5 +31,32 @@
     </form>
   </div>
 
+  <div class="modal-content">
+    <div class="row">
+      <h3 class="col s12">Your Posts</h3>
+      <div class="edit-post">
+        {{#each posts}}
+        <div class="individualPost">
+          <h4 class="post_name">{{this.name}}</h4>
+          <p class="description">{{this.description}}</p>
+          <button class="editPost-btn btn" data-post_id="{{this.id}}">Edit</button>
+        </div>
+
+        <div>
+          <form class="edit-post-btn-form" id="editPostForm{{this.id}}">
+            <label for="editPostName">Post Name</label>
+            <input type="text" id="editPostName{{this.id}}" value="{{this.name}}">
+            <label for="editPostDescription">Post Description</label>
+            <textarea id="editPostDescription{{this.id}}">{{this.description}}</textarea>
+            <button class="saveEdit-btn btn" data-post_id="{{this.id}}">Save</button>
+            <button class="cancelEdit-btn btn" data-post_id="{{this.id}}">Cancel</button>
+          </form>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
 </main>
 <script src="/js/add-post.js"></script>
+<script src="/js/edit-post.js"></script>

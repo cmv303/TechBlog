@@ -7,15 +7,18 @@
       <h1>Welcome back, {{email}}!</h1>
       <button id="logout" class="btn logout">Logout</button>
     {{else}}
-
       <br />
       <br />
-
-      
-      
-      
     {{/if}}
   {{/if}}
+{{#each posts}}
+<div class="post">
+  <h2>{{this.post_name}}</h2>
+  <p>{{this.description}}</p>
+  <p class="author">Posted by {{this.User}}</p>
+</div>
+{{/each}}
+
 </main>
 
 <footer class="footer">
