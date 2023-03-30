@@ -48,7 +48,8 @@
             <input type="text" id="editPostName{{this.id}}" value="{{this.name}}">
             <label for="editPostDescription">Post Description</label>
             <textarea id="editPostDescription{{this.id}}">{{this.description}}</textarea>
-            <button class="saveEdit-btn btn" data-post_id="{{this.id}}">Save</button>
+            
+            <button class='saveEdit-btn-{{this.id}} btn'>Save</button>
             <button class="cancelEdit-btn btn" data-post_id="{{this.id}}">Cancel</button>
           </form>
         </div>

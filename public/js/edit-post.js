@@ -30,7 +30,7 @@ async function editFormHandler(event) {
   }
   const editPostForm = document.querySelector(`#editPostForm${postId}`);
 if (editPostForm) {
-  editPostForm.addEventListener("submit", editFormHandler);
+  editPostForm.addEventListener("click", editFormHandler);
 }
 }
 
