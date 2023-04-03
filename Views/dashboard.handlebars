@@ -37,12 +37,10 @@
       <div class="edit-post">
         {{#each posts}}
         <div class="individualPost">
-          <h4 class="post_name">{{this.name}}</h4>
+          <h4 class="post_name">{{this.post_name}}</h4>
           <p class="description">{{this.description}}</p>
           <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
         </div>
-        {{/each}}
-
         <div>
           <form class="edit-post-btn-form hide" id="editPostForm{{this.id}}">
             <label for="editPostName">Post Name</label>
@@ -55,6 +53,7 @@
           </form>
         </div>
       </div>
+      {{/each}}
     </div>
   </div>
 
