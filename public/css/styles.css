@@ -156,6 +156,10 @@ header {
     max-width: 75%;
   }
   
+  .hide {
+    display: none;
+  }
+
   .app-title {
     font-size: 3rem;
     background-color: var(--primary);

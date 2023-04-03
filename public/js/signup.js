@@ -2,7 +2,6 @@ const signupFormHandler = async function (event) {
   event.preventDefault();
 console.log("Am i in the signup.js???")
   const emailEl = document.querySelector("#email-signUpId");
-  const usernameEl = document.querySelector("#username-signUpId");
   const passwordEl = document.querySelector("#password-signUpId");
 
   const response = await fetch("api/user/signup", {
@@ -17,7 +16,7 @@ console.log("Am i in the signup.js???")
   if (response.ok) {
     document.location.replace("/dashboard");
   } else {
-    alert("Failed to sign up");
+    alert("You may have already signed up!");
   }
 };
 

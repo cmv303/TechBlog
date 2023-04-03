@@ -6,12 +6,7 @@ async function editFormHandler(event) {
     `#editPostDescription${postId}`
   ).value;
 
-  // window.location gives access to the URL. Rhe .split() method is used to access the number at the end of the URL, and set that equal to id.
-  // const id = window.location.toString().split("/")[
-  //   window.location.toString().split("/").length - 1
-  // ];
-
-  const response = await fetch(`/edit/${id}`, {
+  const response = await fetch(`/edit/:id${postId}`, {
     method: "PUT",
     body: JSON.stringify({
       post_name: editPostName,
@@ -28,14 +23,28 @@ async function editFormHandler(event) {
   } else {
     alert("Failed to edit post");
   }
-  const editPostForm = document.querySelector(`#editPostForm${postId}`);
-if (editPostForm) {
-  editPostForm.addEventListener("click", editFormHandler);
 }
-}
+document.querySelectorAll(".editPost-btn").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const postId = event.target.getAttribute("data-post_id");
+    const editPostForm = document.querySelector(`#editPostForm${postId}`);
+    editPostForm.classList.remove("hide");
+  });
+});
 
+document.querySelectorAll(".cancelEdit-btn").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const postId = event.target.getAttribute("data-post_id");
+    const editPostForm = document.querySelector(`#editPostForm${postId}`);
+    editPostForm.classList.add("hide");
+  });
+});
 
-
-// document
-//   .querySelector(".edit-post-btn-form")
-//   .addEventListener("click", editFormHandler);
+const saveEditBtn = document.querySelector(".saveEdit-btn");
+  saveEditBtn.addEventListener("click", (event) => {
+    const postId = event.target.getAttribute("data-post_id");
+    console.log("postId", postId);
+    const editPostForm = document.querySelector(`#editPostForm${postId}`);
+    editFormHandler(event);
+    editPostForm.classList.add("hide");
+  });

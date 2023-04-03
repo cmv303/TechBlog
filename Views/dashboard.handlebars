@@ -39,21 +39,21 @@
         <div class="individualPost">
           <h4 class="post_name">{{this.name}}</h4>
           <p class="description">{{this.description}}</p>
-          <button class="editPost-btn btn" data-post_id="{{this.id}}">Edit</button>
+          <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
         </div>
+        {{/each}}
 
         <div>
-          <form class="edit-post-btn-form" id="editPostForm{{this.id}}">
+          <form class="edit-post-btn-form hide" id="editPostForm{{this.id}}">
             <label for="editPostName">Post Name</label>
             <input type="text" id="editPostName{{this.id}}" value="{{this.name}}">
             <label for="editPostDescription">Post Description</label>
             <textarea id="editPostDescription{{this.id}}">{{this.description}}</textarea>
             
-            <button class='saveEdit-btn-{{this.id}} btn'>Save</button>
-            <button class="cancelEdit-btn btn" data-post_id="{{this.id}}">Cancel</button>
+            <button class='saveEdit-btn btn' id="saveEdit-btn-{{this.id}}" data-post_id="{{this.id}}">Save</button>
+            <button class="cancelEdit-btn btn" id="cancelEdit-btn-{{this.id}}" data-post_id="{{this.id}}">Cancel</button>
           </form>
         </div>
-        {{/each}}
       </div>
     </div>
   </div>
