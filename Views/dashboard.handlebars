@@ -39,6 +39,7 @@
         <div class="individualPost">
           <h4 class="post_name">{{this.post_name}}</h4>
           <p class="description">{{this.description}}</p>
+          <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
           <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
         </div>
         <div>
