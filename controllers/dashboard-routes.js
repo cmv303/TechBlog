@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post } = require("../models");
+const { Post, Comment } = require("../models");
 const withAuth = require("../components/auth");
 
 router.get("/", withAuth, async (req, res) => {
@@ -37,6 +37,20 @@ router.get("/edit/:id", withAuth, async (req, res) => {
       res.status(404).end();
     }
   } catch (err) {
+  }
+});
+
+router.get("/:post_id/comment", async (req, res) => {
+  try {
+    const comments = await Comment.findAll({
+      where: {
+        post_id: req.params.post_id
+      }
+    });
+    res.json(comments);
+
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
