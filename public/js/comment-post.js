@@ -25,10 +25,12 @@ async function addCommentHandler(event, postId) {
 document.querySelectorAll(".comment-btn").forEach((button) => {
     button.addEventListener("click", async (event) => {
       const postId = event.target.getAttribute("data-post_id");
-      const commentOnPost = document.querySelector(`#commentForm${postId}`);
-      commentOnPost.classList.remove("hide");
+      const commentEntry = document.querySelector(`#commentEntry${postId}`);
+     
 
       commentForm = document.querySelector(`#commentForm${postId} .comment-form`);
+      
+      
       commentForm.addEventListener('submit', (event) => addCommentHandler(event, postId));
     });
   });

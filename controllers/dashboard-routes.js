@@ -40,14 +40,18 @@ router.get("/edit/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/:post_id/comment", async (req, res) => {
+router.get("/:id/comment", withAuth, async (req, res) => {
   try {
+    const postData = await Post.findByPk(req.params.id);
+    if (!postData) {
+      res.status(404).end();
+    }
     const comments = await Comment.findAll({
       where: {
-        post_id: req.params.post_id
-      }
+        post_id: postData.id,
+      },
     });
-    res.json(comments);
+    res.render('dashboard', { comments });
 
   } catch (err) {
     res.status(500).json(err);

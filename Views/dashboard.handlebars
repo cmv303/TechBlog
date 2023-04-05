@@ -42,6 +42,26 @@
           <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
           <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
         </div>
+         <div class="comments">
+    {{#each comments}}
+      <div class="individualComment">
+        <p class="commentEntry">{{this.id}}</p>
+        <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
+        
+        
+      </div>
+    {{/each}}
+  </div>
+       
+        <div>
+          <form class="comment-form" id="commentOnPost{{this.id}}">
+            <button class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/post/{{this.id}}/comment/new">Comment</button>
+            <label for="commentOnPost{{this.id}}">Leave a Comment!</label>
+            <textarea id="commentEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
+            </form>
+        </div>
+
+
         <div>
           <form class="edit-post-btn-form hide" id="editPostForm{{this.id}}">
             <label for="editPostName{{this.id}}">Post Name</label>
@@ -52,13 +72,9 @@
             <button class="cancelEdit-btn btn" id="cancelEdit-btn-{{this.id}}" data-post_id="{{this.id}}">Cancel</button>
           </form>
         </div>
-        <div>
-          <form class="comment-form" id="commentForm{{this.id}}">
-            <label for="commentOnPost{{this.id}}">Leave a Comment!</label>
-            <textarea id="commenEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
-            <button class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}">Comment</button>
-            </form>
-        </div>
+        <br>
+        <br>
+
       </div>
       {{/each}}
     </div>
