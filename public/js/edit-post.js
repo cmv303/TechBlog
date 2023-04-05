@@ -6,7 +6,7 @@ async function editFormHandler(event) {
     `#editPostDescription${postId}`
   ).value;
 
-  const response = await fetch(`/edit/:id${postId}`, {
+  const response = await fetch(`api/new/${postId}`, {
     method: "PUT",
     body: JSON.stringify({
       post_name: editPostName,
@@ -40,11 +40,12 @@ document.querySelectorAll(".cancelEdit-btn").forEach((button) => {
   });
 });
 
-const saveEditBtn = document.querySelector(".saveEdit-btn");
-  saveEditBtn.addEventListener("click", (event) => {
+
+document.querySelectorAll(".saveEdit-btn").forEach((button) => {
+  button.addEventListener("click", (event) => {
     const postId = event.target.getAttribute("data-post_id");
-    console.log("postId", postId);
     const editPostForm = document.querySelector(`#editPostForm${postId}`);
     editFormHandler(event);
     editPostForm.classList.add("hide");
   });
+});

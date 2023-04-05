@@ -43,9 +43,9 @@
         </div>
         <div>
           <form class="edit-post-btn-form hide" id="editPostForm{{this.id}}">
-            <label for="editPostName">Post Name</label>
-            <input type="text" id="editPostName{{this.id}}" value="{{this.name}}">
-            <label for="editPostDescription">Post Description</label>
+            <label for="editPostName{{this.id}}">Post Name</label>
+            <input type="text" id="editPostName{{this.id}}" value="{{this.name}}" placeholder="Don't forget to add a post name, or it'll come back blank!">
+            <label for="editPostDescription{{this.id}}">Post Description</label>
             <textarea id="editPostDescription{{this.id}}">{{this.description}}</textarea>
             
             <button class='saveEdit-btn btn' id="saveEdit-btn-{{this.id}}" data-post_id="{{this.id}}">Save</button>
