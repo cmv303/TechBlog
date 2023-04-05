@@ -33,29 +33,22 @@
 
   <div class="modal-content">
     <div class="row">
-      <h3 class="col s12">Your Posts</h3>
+      <h3 class="col s12">Your Posts:</h3>
+      <br>
+      <br>
       <div class="edit-post">
         {{#each posts}}
         <div class="individualPost">
-          <h4 class="post_name">{{this.post_name}}</h4>
+          <h4 class="post_name">Post Name: {{this.post_name}}</h4>
           <p class="description">{{this.description}}</p>
           <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
           <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
         </div>
-         <div class="comments">
-    {{#each comments}}
-      <div class="individualComment">
-        <p class="commentEntry">{{this.id}}</p>
-        <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
-        
-        
-      </div>
-    {{/each}}
-  </div>
+
        
         <div>
           <form class="comment-form" id="commentOnPost{{this.id}}">
-            <button class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/post/{{this.id}}/comment/new">Comment</button>
+            <button type="submit" class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/comment/{{this.id}}">Comment</button>
             <label for="commentOnPost{{this.id}}">Leave a Comment!</label>
             <textarea id="commentEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
             </form>
