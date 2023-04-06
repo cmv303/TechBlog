@@ -22,6 +22,8 @@ router.post(`/:post_id`, withAuth, async (req, res) => {
     });
     const comment = await Comment.findByPk(newComment.id, {
       include: [{ model: User }],
+      raw: true,
+      nest: true
     });
     res.json(comment);
   } catch (err) {
