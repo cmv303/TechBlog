@@ -47,12 +47,21 @@
 
        
         <div>
-          <form class="comment-form" id="commentOnPost{{this.id}}">
+          <form class="comment-form" id="commentOnPost">
             <button type="submit" class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/comment/{{this.id}}">Comment</button>
-            <label for="commentOnPost{{this.id}}">Leave a Comment!</label>
-            <textarea id="commentEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
+
+            
+            <label for="commentOnPost{{this.commentOnPost}}">Leave a Comment!</label>
+            <textarea id="commentEntry{{this.commentEntry}}" placeholder="Write your comment here!"></textarea>
             </form>
         </div>
+
+        {{#each this.comments}}
+          <div>
+            <p class="comment">{{this.id}}</p>
+            <p class="comment-timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
+          </div>
+        {{/each}}
 
 
         <div>

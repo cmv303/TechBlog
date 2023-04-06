@@ -2,19 +2,26 @@
 async function addCommentHandler(event, postId) {
     event.preventDefault();
 
-    const commentEntry = document.querySelector(`#commentEntry${postId}`);
-    const commentOnPost = document.querySelector(`#commentOnPost${postId}`);
-    if (!commentEntry || !commentOnPost) {
-        console.error('Cannot find comment input fields');
+    const commentEntry = document.querySelector(`#commentEntry`);
+    const commentOnPost = document.querySelector(`#commentOnPost`);
+    if (!commentEntry) {
+        console.error('Cannot find comment entry input fields');
         return;
       }
+    if (!commentOnPost) {
+        console.error('Cannot find comment on post input fields');
+        return;
+      }
+    
+    
+      
 
     const commentEntryValue = commentEntry.value.trim();
   const commentOnPostValue = commentOnPost.value;
     
     
 
-    const response = await fetch(`api/comment/${postId}`, {
+    const response = await fetch(`api/comment/:id:${postId}`, {
         method: 'POST',
         body: JSON.stringify({
             commentEntry: commentEntryValue ,
@@ -41,20 +48,23 @@ document.querySelectorAll(".comment-btn").forEach((button) => {
     button.addEventListener("click", async (event) => {
         console.log("are you hitting this?", event.target);
       const postId = event.target.getAttribute("data-post_id");
-      const commentEntry = document.querySelector(`#commentEntry${postId}`);
-      const commentOnPost = document.querySelector(`#commentOnPost${postId}`)
-      if (!commentEntry || !commentOnPost) {
-        console.error('Cannot find comment input fields');
+      const commentEntry = document.querySelector(`#commentEntry`);
+      const commentOnPost = document.querySelector(`#commentOnPost`)
+      if (!commentEntry) {
+        console.error('Cannot find comment entry input fields');
         return;
       }
-      commentEntry.classList.add("hide");
-      const commentForm = document.querySelector(`#commentForm${postId} .comment-form`);
+      if (!commentOnPost) {
+        console.error('Cannot find comment on post input fields');
+        return;
+      }
+     
+      const commentForm = document.querySelector(`.comment-form`);
       if (!commentForm) {
         console.error('Cannot find comment form');
         return;
       }
 
-      commentForm.classList.remove('hide');
       commentForm.addEventListener('submit', async (event) => {
     });
   });
