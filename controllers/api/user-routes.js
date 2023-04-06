@@ -4,7 +4,7 @@ const { User } = require("../../models");
 console.log("user", User);
 
 router.post("/signup", async (req, res) => {
-  console.log("am I hitting signup??")
+  console.log("am I hitting signup??");
   try {
     const newUser = await User.create({
       email: req.body.email,
@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    console.log("Am i logged in?")
+    console.log("Am i logged in?");
     const user = await User.findOne({
       where: {
         email: req.body.email,
@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
     }
 
     const validPassword = user.checkPassword(req.body.password);
-console.log("valid password???", validPassword)
+    console.log("valid password???", validPassword);
     if (!validPassword) {
       res.status(400).json({
         message: "Incorrect username or password!",
@@ -55,7 +55,7 @@ console.log("valid password???", validPassword)
       res.json({ message: "You are now logged in!" });
     });
   } catch (err) {
-    console.log("ERROR", err)
+    console.log("ERROR", err);
     res.status(400).json({
       message: "Sorry, we couldn't find you! Please try again later.",
     });

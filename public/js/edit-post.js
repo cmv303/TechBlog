@@ -40,7 +40,6 @@ document.querySelectorAll(".cancelEdit-btn").forEach((button) => {
   });
 });
 
-
 document.querySelectorAll(".saveEdit-btn").forEach((button) => {
   button.addEventListener("click", (event) => {
     const postId = event.target.getAttribute("data-post_id");

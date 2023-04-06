@@ -11,9 +11,9 @@ router.get("/", withAuth, async (req, res) => {
     });
     const posts = postData.map((post) => post.get({ plain: true }));
     // fill in the view to be rendered
-    res.render("dashboard", {posts});
+    res.render("dashboard", { posts });
   } catch (err) {
-    console.log("Why error??")
+    console.log("Why error??");
   }
 });
 
@@ -32,27 +32,26 @@ router.get("/edit/:id", withAuth, async (req, res) => {
       const post = postData.get({ plain: true });
       // which view should we render if we want to edit a post?
       //! ?? is it 'edit' that I need?
-      res.render("edit", {post});
+      res.render("edit", { post });
     } else {
       res.status(404).end();
     }
-  } catch (err) {
-  }
+  } catch (err) {}
 });
 
 router.get("/comment/:post_id", withAuth, async (req, res) => {
+  const { post_id } = req.params;
+  const { commentEntry } = req.body;
   try {
-    const commentsData = await Post.findByPk(req.params.id);
-    if (!commentsData) {
-      res.status(404).end();
-    }
-    const comments = await Comment.findAll({
-      where: {
-        post_id: commentsData.id,
-      },
+    const newComment = await Comment.create({
+      description: commentEntry,
+      post_id,
+      user_id: req.session.user_id,
     });
-    res.render('dashboard', { comments });
-
+    const comments = await Comment.findByPk(newComment.id, {
+      include: [{ model: User }],
+    });
+    res.json(comments);
   } catch (err) {
     res.status(500).json(err);
   }

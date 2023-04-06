@@ -1,11 +1,11 @@
 //rendering things on front-end
 
-const router = require('express').Router();
-const { Post, Comment, User } = require('../models/');
+const router = require("express").Router();
+const { Post, Comment, User } = require("../models/");
 
 // get all posts for homepage
-router.get('/', async (req, res) => {
-  console.log("Am I inside the GET?")
+router.get("/", async (req, res) => {
+  console.log("Am I inside the GET?");
   try {
     // we need to get all Posts and include the User for each (change lines 8 and 9)
     const postData = await Post.findAll({
@@ -15,15 +15,15 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
     console.log("this is a post", posts);
     // render all the posts here
-    res.render('all', { posts });
+    res.render("all", { posts });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 // get single post
-router.get('/post/:id', async (req, res) => {
-  console.log("Am I inside the Post:id?")
+router.get("/post/:id", async (req, res) => {
+  console.log("Am I inside the Post:id?");
   try {
     // what should we pass here? we need to get some data passed via the request body (something.something.id?)
     // change the model below, but not the findByPk method.
@@ -41,7 +41,7 @@ router.get('/post/:id', async (req, res) => {
       // serialize the data
       const post = postData.get({ plain: true });
       // which view should we render for a single-post?
-      res.render('/post', { post });
+      res.render("/post", { post });
     } else {
       res.status(404).end();
     }
@@ -51,32 +51,31 @@ router.get('/post/:id', async (req, res) => {
 });
 
 // giving you the login and signup route pieces below, no changes needed.
-router.get('/login', (req, res) => {
-  console.log("Am I inside the GET login?")
+router.get("/login", (req, res) => {
+  console.log("Am I inside the GET login?");
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
-  res.render('login');
+  res.render("login");
 });
 
-router.get('/signup', (req, res) => {
-  console.log("Am I inside the GET signup?")
+router.get("/signup", (req, res) => {
+  console.log("Am I inside the GET signup?");
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
 
-  res.render('signup');
+  res.render("signup");
 });
 
-router.get('/logout', (req, res) => {
-  console.log("Am I inside the GET logout?")
-  res.render('logout');
+router.get("/logout", (req, res) => {
+  console.log("Am I inside the GET logout?");
+  res.render("logout");
 });
 
 module.exports = router;
-
 
 //from old file
 // GET home page
