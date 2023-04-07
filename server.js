@@ -10,7 +10,6 @@ require("dotenv").config();
 //iniitialize express app
 const app = express();
 const PORT = process.env.PORT || 3001;
-console.log("Hello hello");
 
 //initalize sequelize
 const sequelize = require("./config/connection");
@@ -33,7 +32,6 @@ const sess = {
     db: sequelize,
   }),
 };
-console.log("What's going on?");
 
 app.use(session(sess));
 
@@ -47,7 +45,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
-console.log("I've made it down here");
 
 app.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}, yay: `);
