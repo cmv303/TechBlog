@@ -12,14 +12,17 @@
     {{/if}}
   {{/if}}
   {{#each posts}}
-  <br>
+    <br />
     <div class="post">
       <h1>{{this.post_name}}</h1>
       <p>{{this.description}}</p>
       <p class="author">Posted by {{this.User.email}}</p>
-      <p class="timestamp">{{formatDate this.createdAt "dddd, MMMM Do YYYY, h:mm a"}}</p>
+      <p class="timestamp">{{formatDate
+          this.createdAt
+          "dddd, MMMM Do YYYY, h:mm a"
+        }}</p>
     </div>
-    <br>
+    <br />
   {{/each}}
 
 </main>

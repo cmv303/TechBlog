@@ -1,3 +1,4 @@
+//handle editFormHandler
 async function editFormHandler(event) {
   event.preventDefault();
   const postId = event.target.getAttribute("data-post_id");
@@ -6,6 +7,7 @@ async function editFormHandler(event) {
     `#editPostDescription${postId}`
   ).value;
 
+  //UPDATE request for post to be updated
   const response = await fetch(`api/new/${postId}`, {
     method: "PUT",
     body: JSON.stringify({

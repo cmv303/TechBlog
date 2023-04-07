@@ -1,21 +1,16 @@
+//handle addCommentHandler
 async function addCommentHandler(event) {
   event.preventDefault();
 
   const postId = event.target.getAttribute("data-post_id");
-  console.log("event target", event.target);
   const commentEntry = document.querySelector(`#commentEntry${postId}`).value;
-  console.log("are you undefined?, postID", )
- 
-  console.log("are you also undefined, commentEntry?", event.target.dataset),
-
-  console.log("postId", postId);
-  console.log("commentEntry", commentEntry);
 
   if (!commentEntry) {
     console.error("Cannot find comment entry input fields");
     return;
   }
 
+  //POST request to server with comment data
   const response = await fetch(`api/comment/${postId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -32,23 +27,19 @@ async function addCommentHandler(event) {
   }
 }
 
-const commentForm = document.querySelector('.comment-form');
+const commentForm = document.querySelector(".comment-form");
 if (!commentForm) {
   console.error("Cannot find comment form");
 }
 
-
+//iterate through comment buttons, since each post has one
 document.querySelectorAll(".comment-btn").forEach((button) => {
   button.addEventListener("click", async (event) => {
     event.preventDefault();
-    console.log("are you hitting this?", event.target);
     const postId = event.target.getAttribute("data-post_id");
     const commentEntry = document.querySelector(`#commentEntry${postId}`);
     const commentOnPost = document.querySelector(`#commentOnPost${postId}`);
-    // if (!commentEntry || !commentOnPost) {
-    //   console.error("Cannot find comment input fields");
-    //   return;
-    // }
+
     addCommentHandler(event, postId);
     commentEntry.classList.add("hide");
     const commentForm = document.querySelector(
@@ -62,8 +53,3 @@ document.querySelectorAll(".comment-btn").forEach((button) => {
     commentForm.classList.remove("hide");
   });
 });
-    
-
-
-
-// commentForm.addEventListener("submit", async (event) => {});

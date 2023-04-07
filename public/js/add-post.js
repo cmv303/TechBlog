@@ -1,10 +1,11 @@
+//handle newFormHandler
 async function newFormHandler(event) {
   event.preventDefault();
-  console.log("add-post route??");
 
   const post_name = document.querySelector("#post-name").value;
   const description = document.querySelector("#description").value;
 
+  //POST request to server with form data
   const response = await fetch("api/new/post", {
     method: "POST",
     body: JSON.stringify({

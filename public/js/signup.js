@@ -1,9 +1,11 @@
+//handle signupFormHandler
 const signupFormHandler = async function (event) {
   event.preventDefault();
   console.log("Am i in the signup.js???");
   const emailEl = document.querySelector("#email-signUpId");
   const passwordEl = document.querySelector("#password-signUpId");
 
+  //POST request to server to create new user
   const response = await fetch("api/user/signup", {
     method: "POST",
     body: JSON.stringify({
