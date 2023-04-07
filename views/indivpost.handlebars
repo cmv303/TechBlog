@@ -1,0 +1,23 @@
+<div class="individualPost">
+  <a href="/dashboard/post/{{post.id}}">
+    <h4 class="post_name">Post Name: {{post.post_name}}</h4>
+  </a>
+  <p class="description">{{post.description}}</p>
+  <p class="timestamp">{{formatDate post.createdAt "MM/DD/YYYY"}}</p>
+
+  <button
+    class="editPost-btn btn"
+    data-post_id="{{post.id}}"
+    href="/edit/{{post.id}}"
+  >Edit</button>
+  <button
+    type="submit"
+    class="comment-btn btn"
+    id="comment-btn-{{post.id}}"
+    data-post_id="{{post.id}}"
+    href="/comment/{{post.id}}"
+  >Comment</button>
+</div>
+{{! delete <button>
+</button>
+comment button  }}

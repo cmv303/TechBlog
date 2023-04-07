@@ -23,6 +23,23 @@ router.get("/new", withAuth, (req, res) => {
   res.render("post");
 });
 
+router.get("/post/:post_id", withAuth, async (req, res) => {
+  try {
+    // what should we pass here? we need to get some data passed via the request body
+    const postData = await Post.findByPk(req.params.post_id);
+
+    if (postData) {
+      // serializing the data
+      const post = postData.get({ plain: true });
+      // which view should we render if we want to edit a post?
+      console.log("post?", post);
+      res.render("indivpost", { post });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {}
+});
+
 router.get("/edit/:id", withAuth, async (req, res) => {
   try {
     // what should we pass here? we need to get some data passed via the request body

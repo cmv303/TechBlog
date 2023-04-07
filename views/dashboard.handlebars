@@ -39,10 +39,13 @@
       <div class="edit-post">
         {{#each posts}}
         <div class="individualPost">
-          <h4 class="post_name">Post Name: {{this.post_name}}</h4>
+          <a href="/dashboard/post/{{this.id}}" >
+          <h4 class="post_name">Post Name: {{this.post_name}}</h4> </a>
           <p class="description">{{this.description}}</p>
           <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
-          <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button>
+          
+          <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button> 
+          <button class="deletePost-btn btn" id="deletePost-btn-{{this.id}}" data-post_id="{{this.id}}">Delete</button>
         </div>
 
        

@@ -16,16 +16,17 @@ li, a {
     display: inline-block;
     padding: 0px 20px;
     transition: all 0.3s ease 0s;
-}
+} */
 
-header {
+/* header {
+  margin-top: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px 10%;
-}
+} */
 
- li a:hover {
+ /* li a:hover {
     color: #0088a9
 } */
 
@@ -52,7 +53,7 @@ body {
   font-size: 16px;
 }
 
-h1,
+
 h2,
 h3,
 h4,
@@ -70,10 +71,6 @@ h2 a:visited {
 
 h2 a {
   color: var(--primary);
-}
-
-header {
-  margin-top: 50px;
 }
 
 main {
@@ -134,7 +131,7 @@ input {
 
 .nav-links {
   width: 100%;
-  position: fixed;
+  line-height: 3rem;
   background-color: var(--dark);
 }
 
