@@ -33,38 +33,35 @@
 
   <div class="modal-content">
     <div class="row">
-      <h3 class="col s12">Your Posts:</h3>
+      <h1 class="col s12">Your Posts:</h1>
       <br>
       <br>
       <div class="edit-post">
         {{#each posts}}
         <div class="individualPost">
           <a href="/dashboard/post/{{this.id}}" >
-          <h4 class="post_name">Post Name: {{this.post_name}}</h4> </a>
+          <h2 class="post_name">Post Name: {{this.post_name}}</h2> </a>
           <p class="description">{{this.description}}</p>
-          <p class="timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
+          <p class="timestamp">{{formatDate this.createdAt "dddd, MMMM Do YYYY, h:mm a"}}</p>
           
           <button class="editPost-btn btn" data-post_id="{{this.id}}" href="/edit/{{this.id}}">Edit</button> 
           <button class="deletePost-btn btn" id="deletePost-btn-{{this.id}}" data-post_id="{{this.id}}">Delete</button>
         </div>
 
-       
-        <div>
-          <form class="comment-form" id="commentOnPost">
-            <button type="submit" class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/comment/{{this.id}}">Comment</button>
-
-            
-            <label for="commentOnPost{{this.commentOnPost}}">Leave a Comment!</label>
-            <textarea id="commentEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
-            </form>
-        </div>
-
         {{#each this.Comments}}
           <div>
             <p class="comment">{{this.description}}</p>
-            <p class="comment-timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
+            <p class="comment-timestamp">{{formatDate this.createdAt "dddd, MMMM Do YYYY, h:mm a"}}</p>
           </div>
         {{/each}}
+
+         <div>
+          <form class="comment-form" id="commentOnPost">
+            <label for="commentOnPost{{this.commentOnPost}}">Leave a Comment!</label>
+            <textarea id="commentEntry{{this.id}}" placeholder="Write your comment here!"></textarea>
+            <button type="submit" class="comment-btn btn" id="comment-btn-{{this.id}}" data-post_id="{{this.id}}" href="/comment/{{this.id}}">Comment</button>
+            </form>
+        </div>
 
 
         <div>

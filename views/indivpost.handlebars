@@ -3,7 +3,10 @@
     <h4 class="post_name">Post Name: {{post.post_name}}</h4>
   </a>
   <p class="description">{{post.description}}</p>
-  <p class="timestamp">{{formatDate post.createdAt "MM/DD/YYYY"}}</p>
+  <p class="timestamp">{{formatDate
+      post.createdAt
+      "dddd, MMMM Do YYYY, h:mm a"
+    }}</p>
 
   <button
     class="editPost-btn btn"
@@ -17,7 +20,9 @@
     data-post_id="{{post.id}}"
     href="/comment/{{post.id}}"
   >Comment</button>
+  <button
+    class="deletePost-btn btn"
+    id="deletePost-btn-{{this.id}}"
+    data-post_id="{{this.id}}"
+  >Delete</button>
 </div>
-{{! delete <button>
-</button>
-comment button  }}
