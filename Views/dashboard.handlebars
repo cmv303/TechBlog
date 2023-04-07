@@ -56,9 +56,9 @@
             </form>
         </div>
 
-        {{#each this.comments}}
+        {{#each this.Comments}}
           <div>
-            <p class="comment">{{this.id}}</p>
+            <p class="comment">{{this.description}}</p>
             <p class="comment-timestamp">{{formatDate this.createdAt "MM/DD/YYYY"}}</p>
           </div>
         {{/each}}

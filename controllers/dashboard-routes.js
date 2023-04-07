@@ -8,6 +8,7 @@ router.get("/", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
+      include: [Comment]
     });
     const posts = postData.map((post) => post.get({ plain: true }));
     // fill in the view to be rendered
