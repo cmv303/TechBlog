@@ -39,7 +39,7 @@ app.use(session(sess));
 
 //sets up express-handlebars
 app.engine("handlebars", hbs.engine);
-app.set("views", path.join(__dirname, "views"));
+// app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "handlebars");
 
 //middleware
