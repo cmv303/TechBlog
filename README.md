@@ -1,6 +1,6 @@
 # Tech Blog
 
-This is a simple blog format website that has the capacity to create, edit, and delete your own posts, while also allowing you to comment on the posts of others.
+This is a simple blog format web application that has the capacity to create, edit, and delete your own posts, while also allowing you to comment on the posts of others.
 
 While the homepage will show the posts of all users, your dashboard is private to you--only your posts will be displayed.
 
